@@ -14,23 +14,42 @@ font-size: 56px;
 font-weight: 700;
 color: #75B79E;
 }
+
 .linha{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 1023px;
-    margin-left:122px
+    margin-left:122px;
+    perspective: 700px;
+}
+.frente{
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    position: absolute;
+}
+.verso{
+    backface-visibility: hidden;
+    position: absolute;
 }
 .carta{
+    display: flex;
     padding: 24px 7px 22px 10px;
     height: 146px;
     width: 117px;
+    border-radius: 5px;
     background-color: #A7E9AF;
     margin-bottom: 34px;
+    transition: transform 1s linear;
+    transform-style: preserve-3d;
+    position: relative;
 }
 .carta img{
     height: 100px;
     width: 100px;
+}
+.flipada{
+    transform: rotateY(180deg);
 }
 @media (max-width: 600px){
 header{
