@@ -4,8 +4,11 @@ while(numero%2!==0||numero>14||numero<4){
     numero=prompt("Com quantas cartas você quer jogar?")
     parseInt(numero)
 }
-let randomizar=["bobross","explody","fiesta","metal","revertit","triplets","unicorn"]
-randomizar.sort(comparador);
+let animacoes=["bobross","explody","fiesta","metal","revertit","triplets","unicorn"]
+animacoes.sort(comparador);
+let randomizacaofinal=[]
+randomizador();
+
 for (let i=0; i<numero/2; i++){
     let cartas=document.querySelector(".primeira")
     cartas.innerHTML+=`
@@ -14,14 +17,12 @@ for (let i=0; i<numero/2; i++){
             <img src="images/front.png">
         </div>
         <div class="verso">
-            <img src="/images/${randomizar[i]}.gif">
+            <img src="/images/${randomizacaofinal[i]}.gif">
         </div>
     </div>
             `
 }
-let randomizar2=[]
-copiaerandomiza()
-for (let i=0; i<numero/2; i++){
+for (let i=numero/2; i<numero; i++){
     let cartas=document.querySelector(".segunda")
     cartas.innerHTML+=`
         <div class="carta" onclick="flip(this)">
@@ -29,7 +30,7 @@ for (let i=0; i<numero/2; i++){
                 <img src="images/front.png">
             </div>
             <div class="verso">
-                <img src="/images/${randomizar2[i]}.gif">
+                <img src="/images/${randomizacaofinal[i]}.gif">
             </div>
         </div>
             `
@@ -37,12 +38,14 @@ for (let i=0; i<numero/2; i++){
 function comparador() { 
 	return Math.random() - 0.5; 
 }
-function copiaerandomiza(){
-    for (i=0;i<numero/2;i++)
+function randomizador(){
+    let randomizar=[]
+    for (let i=0;i<numero/2;i++)
     {
-        randomizar2[i]=randomizar[i]
+        randomizar[i]=animacoes[i]
     }
-    randomizar2.sort(comparador);
+    randomizacaofinal=randomizar.concat(randomizar)
+    randomizacaofinal.sort(comparador);
 }
 function flip(elemento) {
     elemento.classList.toggle("flipada");

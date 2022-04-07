@@ -25,12 +25,13 @@ color: #75B79E;
 }
 .frente{
     backface-visibility: hidden;
-    transform: rotateY(180deg);
+    
     position: absolute;
 }
 .verso{
     backface-visibility: hidden;
     position: absolute;
+    transform: rotateY(180deg);
 }
 .carta{
     display: flex;
