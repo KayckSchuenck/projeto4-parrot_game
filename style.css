@@ -25,7 +25,6 @@ color: #75B79E;
 }
 .frente{
     backface-visibility: hidden;
-    
     position: absolute;
 }
 .verso{
@@ -41,7 +40,7 @@ color: #75B79E;
     border-radius: 5px;
     background-color: #A7E9AF;
     margin-bottom: 34px;
-    transition: transform 1s linear;
+    transition: transform 0.7s linear;
     transform-style: preserve-3d;
     position: relative;
 }

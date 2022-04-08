@@ -1,31 +1,25 @@
-let numero=prompt("Com quantas cartas você quer jogar?")
-parseInt(numero)
-while(numero%2!==0||numero>14||numero<4){
-    numero=prompt("Com quantas cartas você quer jogar?")
-    parseInt(numero)
-}
+let numero;
+iniciarJogo()
 let animacoes=["bobross","explody","fiesta","metal","revertit","triplets","unicorn"]
 animacoes.sort(comparador);
 let randomizacaofinal=[]
 randomizador();
+adicionarCartas();
 
-for (let i=0; i<numero/2; i++){
-    let cartas=document.querySelector(".primeira")
-    cartas.innerHTML+=`
-    <div class="carta" onclick="flip(this)">
-        <div class="frente">
-            <img src="images/front.png">
-        </div>
-        <div class="verso">
-            <img src="/images/${randomizacaofinal[i]}.gif">
-        </div>
-    </div>
-            `
+function iniciarJogo(){
+    numero=prompt("Com quantas cartas você quer jogar?")
+    parseInt(numero)
+    while(numero%2!==0||numero>14||numero<4){
+        numero=prompt("Com quantas cartas você quer jogar?")
+        parseInt(numero)
+        }
 }
-for (let i=numero/2; i<numero; i++){
-    let cartas=document.querySelector(".segunda")
-    cartas.innerHTML+=`
-        <div class="carta" onclick="flip(this)">
+
+function adicionarCartas() {
+    for (let i=0; i<numero/2; i++){
+        let cartas=document.querySelector(".primeira")
+        cartas.innerHTML+=`
+        <div class="carta" data-framework="${randomizacaofinal[i]}" onclick="contarjogadas();flip(this)">
             <div class="frente">
                 <img src="images/front.png">
             </div>
@@ -33,11 +27,23 @@ for (let i=numero/2; i<numero; i++){
                 <img src="/images/${randomizacaofinal[i]}.gif">
             </div>
         </div>
-            `
+                `
+    }
+    for (let i=numero/2; i<numero; i++){
+        let cartas=document.querySelector(".segunda")
+        cartas.innerHTML+=`
+            <div class="carta" data-framework="${randomizacaofinal[i]}" onclick="contarjogadas();flip(this);">
+                <div class="frente">
+                    <img src="images/front.png">
+                </div>
+                <div class="verso">
+                    <img src="/images/${randomizacaofinal[i]}.gif">
+                </div>
+            </div>
+                `
+    }
 }
-function comparador() { 
-	return Math.random() - 0.5; 
-}
+
 function randomizador(){
     let randomizar=[]
     for (let i=0;i<numero/2;i++)
@@ -46,8 +52,52 @@ function randomizador(){
     }
     randomizacaofinal=randomizar.concat(randomizar)
     randomizacaofinal.sort(comparador);
+    randomizacaofinal.sort(comparador);
 }
+function comparador() { 
+	return Math.random() - 0.5; 
+}
+
+let primeiracarta
+let segundacarta
 function flip(elemento) {
-    elemento.classList.toggle("flipada");
-  }
-  card.style.order
+    elemento.classList.add("flipada")
+    if(document.querySelector(".primeiradopar")===null){
+    primeiracarta=elemento
+    primeiracarta.classList.add("primeiradopar")
+    }
+    else{
+    segundacarta=elemento
+    conferircartas()
+    }
+}
+function conferircartas(){
+    primeiracarta.classList.remove("primeiradopar")
+    if (primeiracarta.dataset.framework === segundacarta.dataset.framework && primeiracarta!==segundacarta) {
+        primeiracarta.removeAttribute("onclick")
+        segundacarta.removeAttribute("onclick")
+        conferirFimdoJogo()
+    }
+    else{
+        setTimeout (desvirarcartas,1700)
+    }
+}
+function desvirarcartas(){
+    primeiracarta.classList.remove("flipada")
+    segundacarta.classList.remove("flipada")
+}
+let contador=0
+function contarjogadas(){
+    contador++
+}
+function fimdoJogo(){
+    alert(`Você ganhou em ${contador} jogadas!`)
+}
+function conferirFimdoJogo(){
+    let elemento=document.querySelectorAll(".carta")
+    elemento=Array.from(elemento)
+    let check = elemento.every((elemento) => elemento.classList.contains("flipada"))
+    if(check===true){
+        fimdoJogo()
+    }
+}
