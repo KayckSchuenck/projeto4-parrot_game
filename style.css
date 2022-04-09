@@ -50,6 +50,10 @@ color: #75B79E;
 }
 .flipada{
     transform: rotateY(180deg);
+    pointer-events: none;
+}
+.travada{
+    pointer-events: none;
 }
 @media (max-width: 600px){
 header{

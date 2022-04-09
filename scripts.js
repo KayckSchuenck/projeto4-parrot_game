@@ -68,8 +68,12 @@ function flip(elemento) {
     }
     else{
     segundacarta=elemento
+    travamento()
     conferircartas()
     }
+}
+function travamento(){
+let elemento=document.querySelectorAll(".carta").forEach(elemento=>elemento.classList.toggle("travada"))
 }
 function conferircartas(){
     primeiracarta.classList.remove("primeiradopar")
@@ -77,21 +81,16 @@ function conferircartas(){
         primeiracarta.removeAttribute("onclick")
         segundacarta.removeAttribute("onclick")
         conferirFimdoJogo()
+        setTimeout (travamento,1700)
     }
     else{
-        setTimeout (desvirarcartas,1700)
+        setTimeout (desvirarcartas,1000)
+        setTimeout (travamento,1700)
     }
 }
 function desvirarcartas(){
     primeiracarta.classList.remove("flipada")
     segundacarta.classList.remove("flipada")
-}
-let contador=0
-function contarjogadas(){
-    contador++
-}
-function fimdoJogo(){
-    alert(`Você ganhou em ${contador} jogadas!`)
 }
 function conferirFimdoJogo(){
     let elemento=document.querySelectorAll(".carta")
@@ -100,4 +99,11 @@ function conferirFimdoJogo(){
     if(check===true){
         fimdoJogo()
     }
+}
+let contador=0
+function contarjogadas(){
+    contador++
+}
+function fimdoJogo(){
+    alert(`Você ganhou em ${contador} jogadas!`)
 }
