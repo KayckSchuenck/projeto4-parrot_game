@@ -55,6 +55,16 @@ color: #75B79E;
 .travada{
     pointer-events: none;
 }
+.relogio{
+    height:50px;
+    width:150px;
+    background-color: grey;
+    position: absolute;
+    top:0px;
+    right: 0px;
+    font-size: 30px;
+}
+
 @media (max-width: 600px){
 header{
     width: 100%;
@@ -68,5 +78,9 @@ header{
     display: block;
     width: 117px;
     margin: 0px;
+}
+.relogio{
+    right: 33%;
+    height:35px;
 }
 }
