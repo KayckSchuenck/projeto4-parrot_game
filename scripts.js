@@ -3,8 +3,7 @@ let numero;
 iniciarJogo()
 
 function iniciarJogo(){
-    numero=prompt("Com quantas cartas você quer jogar?")
-    parseInt(numero)
+    numero=Number(prompt("Com quantas cartas você quer jogar?"))
     while(numero%2!==0||numero>14||numero<4){
         numero=prompt("Com quantas cartas você quer jogar?")
         parseInt(numero)

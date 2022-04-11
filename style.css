@@ -58,11 +58,15 @@ color: #75B79E;
 .relogio{
     height:50px;
     width:150px;
-    background-color: grey;
+    background-color:#A7E9AF;
     position: absolute;
     top:0px;
     right: 0px;
-    font-size: 30px;
+    font-size: 35px;
+    color:rgb(70, 109, 94);
+    font-weight: bold;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px; 
 }
 
 @media (max-width: 600px){
