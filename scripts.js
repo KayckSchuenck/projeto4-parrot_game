@@ -110,7 +110,7 @@ function conferircartas(){
         primeiracarta.removeAttribute("onclick")
         segundacarta.removeAttribute("onclick")
         conferirFimdoJogo()
-        setTimeout (travamento,700)
+        setTimeout (travamento,300)
     }
     else{
         setTimeout (desvirarcartas,1000)
@@ -128,7 +128,7 @@ function conferirFimdoJogo(){
     elemento=Array.from(elemento)
     let check = elemento.every((elemento) => elemento.classList.contains("flipada"))
     if(check===true){
-        fimdoJogo()
+        setTimeout(fimdoJogo,700)
     }
 }
 
@@ -139,5 +139,10 @@ function contarjogadas(){
 function fimdoJogo(){
     clearInterval(idInterval)
     alert(`Você ganhou em ${contador} jogadas e 0${minutos}:${segundos} segundos!`)
-
+    reiniciar()
+}
+function reiniciar(){
+let reset=prompt("Deseja reiniciar o jogo?")
+   if(reset==="sim"){
+    window.location.reload();} 
 }
