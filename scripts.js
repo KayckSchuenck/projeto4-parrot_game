@@ -65,7 +65,7 @@ function adicionarCartas() {
                 <img src="images/front.png">
             </div>
             <div class="verso">
-                <img src="/images/${randomizacaofinal[i]}.gif">
+                <img src="images/${randomizacaofinal[i]}.gif">
             </div>
         </div>
                 `
@@ -78,7 +78,7 @@ function adicionarCartas() {
                     <img src="images/front.png">
                 </div>
                 <div class="verso">
-                    <img src="/images/${randomizacaofinal[i]}.gif">
+                    <img src="images/${randomizacaofinal[i]}.gif">
                 </div>
             </div>
                 `
